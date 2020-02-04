@@ -74,7 +74,7 @@
         <a href="#" style="z-index:1" id="posterImg" class="poster-img-noscript"><img class="img-responsive" src="http://via.placeholder.com/1280x720?text=custom+image"></a>
         <div id="player"></div>
         <noscript>
-          <iframe src="https://www.youtube.com/embed/QQ32MyZmXeQ" frameborder="0" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/QQ32MyZmXeQ?playsinline=1&" frameborder="0" allowfullscreen></iframe>
         </noscript>
       </div>
     </div>
@@ -99,7 +99,6 @@
       function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
           videoId: 'QQ32MyZmXeQ',
-          playsinline: '1',
           events: {
             'onReady': onReadyEvent,
             'onStateChange': onStateChangeEvent

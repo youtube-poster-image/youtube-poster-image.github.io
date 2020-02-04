@@ -99,6 +99,7 @@
       function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
           videoId: 'QQ32MyZmXeQ',
+          playsinline: '1',
           events: {
             'onReady': onReadyEvent,
             'onStateChange': onStateChangeEvent

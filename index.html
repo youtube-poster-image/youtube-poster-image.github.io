@@ -81,41 +81,29 @@
     </div>
 
     <script>
+      // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
 
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-
-// window.onload = function exampleFunction() { 
-
-// 	myFunction();
-// } 
-
-//       function myFunction() {
-        var tag = document.createElement('script');
-
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-//       }
-      
+      var posterImg = document.getElementById('posterImg');
       posterImg.addEventListener('click', function(e) {
         e.preventDefault();
-	loadPlayer();
-        var posterImg = document.getElementById('posterImg');
-        setTimeout(function() {
-          posterImg.parentNode.removeChild(posterImg);
-        }, 600);
-        player.playVideo();
+        playerLoad();
+        //player.playVideo();
       });
 
       // 3. This function creates an <iframe> (and YouTube player)
       //    after the API code downloads.
       var player;
-      function loadPlayer() {
+      function playerLoad() {
         player = new YT.Player('player', {
           videoId: 'QQ32MyZmXeQ',
-          playerVars: {
-              'autoplay': 1
-           },
+	  playerVars: {
+	     'autoplay': 1
+	  },
           events: {
             'onReady': onReadyEvent,
             'onStateChange': onStateChangeEvent
@@ -146,7 +134,7 @@
         } else if (playerStatus == 3) {
           state = "Buffering";
         } else if (playerStatus == 5) {
-          state = "Video Cued"; player.playVideo();
+          state = "Video Cued";
         } else {
           state = "Unknown";
         }

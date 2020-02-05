@@ -93,9 +93,6 @@
         e.preventDefault();
 	
         playerLoad();
-	
-	
-        //player.playVideo();
       });
 
       // 3. This function creates an <iframe> (and YouTube player)
@@ -104,9 +101,9 @@
       function playerLoad() {
         player = new YT.Player('player', {
           videoId: 'QQ32MyZmXeQ',
-	  playerVars: {
-	     'autoplay': 1
-	  },
+// 	  playerVars: {
+// 	     'autoplay': 1
+// 	  },
           events: {
             'onReady': onReadyEvent,
             'onStateChange': onStateChangeEvent
@@ -129,10 +126,6 @@
         if (playerStatus == -1) {
           var videoData = e.target.getVideoData();
           state = "Unstarted - " + videoData.video_id;
-//           var posterImg = document.getElementById('posterImg');
-//           setTimeout(function() {
-//             posterImg.parentNode.removeChild(posterImg);
-//           }, 600);
         } else if (playerStatus == 0) {
           state = "Ended";
         } else if (playerStatus == 1) {

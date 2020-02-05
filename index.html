@@ -91,7 +91,10 @@
       var posterImg = document.getElementById('posterImg');
       posterImg.addEventListener('click', function(e) {
         e.preventDefault();
+	
         playerLoad();
+	
+	
         //player.playVideo();
       });
 
@@ -112,6 +115,10 @@
       }
 
       function onReadyEvent(e) {
+	var posterImg = document.getElementById('posterImg');
+        setTimeout(function() {
+            posterImg.parentNode.removeChild(posterImg);
+        }, 600);
         console.log(Date.now() + ' onReady')
         console.log(e);
       }
@@ -121,10 +128,10 @@
         if (playerStatus == -1) {
           var videoData = e.target.getVideoData();
           state = "Unstarted - " + videoData.video_id;
-          var posterImg = document.getElementById('posterImg');
-          setTimeout(function() {
-            posterImg.parentNode.removeChild(posterImg);
-          }, 600);
+//           var posterImg = document.getElementById('posterImg');
+//           setTimeout(function() {
+//             posterImg.parentNode.removeChild(posterImg);
+//           }, 600);
         } else if (playerStatus == 0) {
           state = "Ended";
         } else if (playerStatus == 1) {

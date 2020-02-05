@@ -89,6 +89,7 @@
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
       var posterImg = document.getElementById('posterImg');
+      var player;
       posterImg.addEventListener('click', function(e) {
         e.preventDefault();
 	
@@ -97,7 +98,7 @@
 
       // 3. This function creates an <iframe> (and YouTube player)
       //    after the API code downloads.
-      var player;
+      
       function playerLoad() {
         player = new YT.Player('player', {
           videoId: 'QQ32MyZmXeQ',
@@ -125,7 +126,7 @@
         var state;
         if (playerStatus == -1) {
           var videoData = e.target.getVideoData();
-          state = "Unstarted - " + videoData.video_id;
+          state = "Unstarted - " + videoData.video_id; player.playVideo();
         } else if (playerStatus == 0) {
           state = "Ended";
         } else if (playerStatus == 1) {
@@ -135,7 +136,7 @@
         } else if (playerStatus == 3) {
           state = "Buffering";
         } else if (playerStatus == 5) {
-          state = "Video Cued";
+          state = "Video Cued"; player.playVideo();
         } else {
           state = "Unknown";
         }
